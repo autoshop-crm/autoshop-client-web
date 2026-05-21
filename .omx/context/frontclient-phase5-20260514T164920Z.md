@@ -1,0 +1,22 @@
+# Context Snapshot — frontclient-phase5
+
+- Task statement: Реализовать Phase 5 — Approvals MVP в `FrontClient`.
+- Desired outcome: В `FrontClient` есть approvals inbox и approval decision page с client-first UI, monetary delta, mobile-first action zone, optimistic approve/reject UX и loading/error/empty states.
+- Known facts/evidence:
+  - UI spec: `FrontClient/CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md`
+  - Implementation plan: `FrontClient/CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`
+  - Phase 4 Orders MVP already links conceptually to approvals
+  - Client-safe approval mapper already exists
+- Constraints:
+  - approval screen is one of the most important screens in the product
+  - UI must stay app-like, card-based, and low-noise
+  - monetary effect must be clearly visible
+  - no staff/internal wording
+- Unknowns/open questions:
+  - real backend approve/reject endpoints for client token flow are not wired yet
+  - comment persistence shape may differ on real backend
+- Likely codebase touchpoints:
+  - `FrontClient/src/pages/*`
+  - `FrontClient/src/api/*`
+  - `FrontClient/src/hooks/*`
+  - `FrontClient/src/domain/client/*`

@@ -1,0 +1,23 @@
+# Context Snapshot — frontclient-phase6
+
+- Task statement: Реализовать Phase 6 — Vehicles MVP в `FrontClient`.
+- Desired outcome: В `FrontClient` есть app-like список автомобилей клиента и vehicle details screen с историей заказов, документами/фото и CTA на сервисные сценарии.
+- Known facts/evidence:
+  - UI spec: `FrontClient/CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md`
+  - Implementation plan: `FrontClient/CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`
+  - Phase 4 Orders MVP already provides order history and order details patterns
+  - Phase 5 Approvals MVP already provides client-safe action blocks
+  - Vehicle mapper already exists in client domain layer
+- Constraints:
+  - vehicles UI must be card-first and history-first
+  - no operational/internal vehicle details
+  - must support multiple cars naturally
+  - CTA should lead toward service scenarios, not admin editing UX
+- Unknowns/open questions:
+  - real backend for client vehicle docs/photos may differ from mock structure
+  - create/edit vehicle flow is not in this phase
+- Likely codebase touchpoints:
+  - `FrontClient/src/pages/*`
+  - `FrontClient/src/api/*`
+  - `FrontClient/src/hooks/*`
+  - `FrontClient/src/domain/client/*`

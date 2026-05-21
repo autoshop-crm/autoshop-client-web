@@ -1,0 +1,32 @@
+{
+  "kind": "omx.question/v1",
+  "question_id": "question-2026-05-14T16-12-56-520Z-d14892c9",
+  "session_id": "crm-customer-ui-design-20260514T155415Z-round2",
+  "created_at": "2026-05-14T16:12:56.520Z",
+  "updated_at": "2026-05-14T16:12:56.562Z",
+  "status": "prompting",
+  "header": "Round 2 · Scope",
+  "question": "Если выбирать только один UI-подход для первой версии, что важнее: максимально похожий на мобильное приложение карточный интерфейс с минимальной плотностью информации, или более плотный web-кабинет, где на одном экране видно больше данных?",
+  "options": [
+    {
+      "label": "App-like, карточный",
+      "value": "app_like_cards",
+      "description": "Меньше плотности, больше скорости и понятности"
+    },
+    {
+      "label": "Плотный web-кабинет",
+      "value": "dense_web_dashboard",
+      "description": "Больше данных на экране, даже ценой простоты"
+    }
+  ],
+  "allow_other": true,
+  "other_label": "Компромисс / свой вариант",
+  "multi_select": false,
+  "type": "single-answerable",
+  "source": "deep-interview",
+  "renderer": {
+    "renderer": "tmux-session",
+    "target": "omx-question-question-2026-05-14T16-12-56-520",
+    "launched_at": "2026-05-14T16:12:56.544Z"
+  }
+}

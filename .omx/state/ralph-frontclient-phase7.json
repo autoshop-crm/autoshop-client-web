@@ -1,0 +1,42 @@
+{
+  "mode": "ralph",
+  "phase": "frontclient-phase7",
+  "task": "Phase 7 — Files и documents",
+  "active": false,
+  "current_phase": "complete",
+  "completed_at": "2026-05-14T17:01:25Z",
+  "context_snapshot_path": ".omx/context/frontclient-phase7-20260514T170125Z.md",
+  "verification": {
+    "build": "PASS",
+    "build_command": "cd FrontClient && npm run build",
+    "deslop_pass": "PASS",
+    "post_deslop_regression": "PASS",
+    "architect_verification": "SELF_REVIEW_PASS"
+  },
+  "changed_files": [
+    "FrontClient/src/app/App.tsx",
+    "FrontClient/src/api/documentsApi.ts",
+    "FrontClient/src/api/ordersApi.ts",
+    "FrontClient/src/api/vehiclesApi.ts",
+    "FrontClient/src/components/DocumentGroupsCard.tsx",
+    "FrontClient/src/components/UploadFilesCard.tsx",
+    "FrontClient/src/domain/client/dictionaries/clientDocumentDictionary.ts",
+    "FrontClient/src/domain/client/formatters/clientFormatters.ts",
+    "FrontClient/src/domain/client/mappers/documentMapper.ts",
+    "FrontClient/src/domain/client/mappers/index.ts",
+    "FrontClient/src/domain/client/mappers/orderDetailsMapper.ts",
+    "FrontClient/src/domain/client/mappers/vehicleDetailsMapper.ts",
+    "FrontClient/src/domain/client/view-models.ts",
+    "FrontClient/src/hooks/useDocumentActions.ts",
+    "FrontClient/src/hooks/useDocumentsData.ts",
+    "FrontClient/src/pages/documents/DocumentsPage.tsx",
+    "FrontClient/src/pages/orders/OrderDetailsPage.tsx",
+    "FrontClient/src/pages/vehicles/VehicleDetailsPage.tsx",
+    "FrontClient/src/types/domain.ts"
+  ],
+  "notes": [
+    "Implemented trust-layer documents hub with grouping for photo/document/act/estimate.",
+    "Added client upload UX with size/type restrictions, progress and retry.",
+    "Integrated open/download flows into order, vehicle and global documents screens."
+  ]
+}

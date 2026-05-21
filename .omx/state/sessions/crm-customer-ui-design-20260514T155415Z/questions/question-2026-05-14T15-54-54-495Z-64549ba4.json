@@ -1,0 +1,37 @@
+{
+  "kind": "omx.question/v1",
+  "question_id": "question-2026-05-14T15-54-54-495Z-64549ba4",
+  "session_id": "crm-customer-ui-design-20260514T155415Z",
+  "created_at": "2026-05-14T15:54:54.495Z",
+  "updated_at": "2026-05-14T15:54:54.528Z",
+  "status": "prompting",
+  "header": "Round 1 · Intent",
+  "question": "Я уже вижу из концепта, что клиентский кабинет не должен быть копией staff CRM и должен давать ощущение прозрачности и контроля. Какой главный эмоциональный эффект UI должен оставлять после 30 секунд использования?",
+  "options": [
+    {
+      "label": "Спокойствие и доверие",
+      "value": "trust_calm",
+      "description": "Клиент быстро понимает статус и не тревожится"
+    },
+    {
+      "label": "Премиальный сервис",
+      "value": "premium_service",
+      "description": "Интерфейс должен ощущаться как дорогой и статусный"
+    },
+    {
+      "label": "Скорость и удобство",
+      "value": "speed_convenience",
+      "description": "Главное — минимум трения и быстрые действия"
+    }
+  ],
+  "allow_other": true,
+  "other_label": "Другой эффект",
+  "multi_select": false,
+  "type": "single-answerable",
+  "source": "deep-interview",
+  "renderer": {
+    "renderer": "tmux-session",
+    "target": "omx-question-question-2026-05-14T15-54-54-495",
+    "launched_at": "2026-05-14T15:54:54.505Z"
+  }
+}

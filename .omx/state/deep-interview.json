@@ -1,0 +1,26 @@
+{
+  "active": false,
+  "current_phase": "deep-interview",
+  "state": {
+    "interview_id": "crm-customer-ui-design-20260514T155415Z",
+    "profile": "standard",
+    "type": "brownfield",
+    "initial_idea": "UI design spec for FrontClient based on customer frontend concept",
+    "rounds": [
+      {"round":1,"target":"intent","question":"Какой главный эмоциональный эффект UI должен оставлять после 30 секунд использования?","answer":"скорость и удобство","scores":{"intent":0.80,"outcome":0.45,"scope":0.35,"constraints":0.40,"success":0.30,"context":0.75},"ambiguity":0.45,"notes":"Intent clarified toward low-friction, app-like experience over premium ceremonial feel."},
+      {"round":2,"target":"scope","question":"Для первой версии важнее app-like карточный интерфейс или плотный web-кабинет?","answer":"app-like, карточный, без лишней декоративности; дизайн должен быть общим для web и mobile app","scores":{"intent":0.88,"outcome":0.70,"scope":0.72,"constraints":0.55,"success":0.42,"context":0.82},"ambiguity":0.31,"notes":"Strong cross-platform design constraint emerged: shared visual language for future mobile app and web client."},
+      {"round":3,"target":"non-goals","question":"Что для клиентского UI жёстко запрещено?","answer":"нет запретов","scores":{"intent":0.88,"outcome":0.70,"scope":0.58,"constraints":0.42,"success":0.42,"context":0.82},"ambiguity":0.37,"notes":"Non-goals unresolved. Answer conflicts with concept's explicit warnings against staff-copy and internal language. Needs pressure pass."},
+      {"round":4,"target":"non-goals","question":"Что из backend данных ты всё равно не покажешь обычному клиенту на основном order screen первой версии?","answer":"спрячу внутренние operational детали; для клиента оставляем только то, что его интересует: цена заявки, бонусы, его машины, заказы, история заказов","scores":{"intent":0.90,"outcome":0.80,"scope":0.84,"constraints":0.76,"success":0.50,"context":0.86},"ambiguity":0.20,"notes":"Non-goals now explicit: hide internal operational details; focus on user-relevant artifacts only. Pressure pass completed by revisiting prior contradictory answer."},
+      {"round":5,"target":"decision-boundaries","question":"Что я могу зафиксировать в UI design document самостоятельно без отдельного согласования?","answer":"оба пункта","scores":{"intent":0.90,"outcome":0.82,"scope":0.86,"constraints":0.82,"success":0.54,"context":0.88},"ambiguity":0.16,"notes":"Decision boundaries explicit: agent may define screen patterns/navigation and baseline visual system autonomously."},
+      {"round":6,"target":"success","question":"По какому самому простому признаку ты поймёшь, что UI-концепция получилась правильной?","answer":"клиент быстро делает ключевые действия; не более 3 кликов до нужной информации; не куча информации, а только нужная; не более 7 важных объектов одновременно перед глазами","scores":{"intent":0.92,"outcome":0.90,"scope":0.88,"constraints":0.84,"success":0.90,"context":0.88},"ambiguity":0.10,"notes":"Success criteria now explicit and testable: 3-click access, information cap, action speed."}
+    ],
+    "current_ambiguity": 0.10,
+    "threshold": 0.20,
+    "max_rounds": 12,
+    "challenge_modes_used": ["Contrarian"],
+    "codebase_context": "staff-first reference with reusable theme/api/domain",
+    "current_stage": "crystallized",
+    "current_focus": "artifact-generation",
+    "context_snapshot_path": ".omx/context/crm-customer-ui-design-20260514T155415Z.md"
+  }
+}

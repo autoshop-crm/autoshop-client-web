@@ -1,0 +1,26 @@
+# Context Snapshot
+
+- task statement: Реализовать Phase 10 — Profile, account, settings в `FrontClient` с учетом `CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md` и `CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`.
+- desired outcome: Клиент может управлять своим аккаунтом без обращения в поддержку: видеть профиль, контакты, подтвержденные каналы связи, менять пароль и настраивать уведомления в клиентском app-like UI.
+- known facts/evidence:
+  - `profile` route пока placeholder.
+  - Auth layer уже хранит `AuthUser` в local storage и умеет login/logout/me.
+  - Phase 10 DoD: клиент может управлять аккаунтом без обращения в поддержку.
+  - В текущем проекте нет backend contract для update profile/settings, значит нужен mock-first stateful API.
+- constraints:
+  - Не превращать профиль в staff/accounting UI.
+  - Оставить интерфейс карточным, быстрым и mobile-consistent.
+  - Сохранить существующий auth контекст как single source of truth для current user.
+- unknowns/open questions:
+  - Нет реальных endpoints на update contacts/password/notifications.
+  - Verified channels нужно показать как понятный state, без сложной верификации flow.
+- likely codebase touchpoints:
+  - `FrontClient/src/types/auth.ts`
+  - `FrontClient/src/api/authApi.ts`
+  - `FrontClient/src/auth/storage.ts`
+  - `FrontClient/src/app/providers/AuthProvider.tsx`
+  - `FrontClient/src/api/profileApi.ts`
+  - `FrontClient/src/domain/client/view-models.ts`
+  - `FrontClient/src/domain/client/mappers/profileMapper.ts`
+  - `FrontClient/src/hooks/useProfileData.ts`
+  - `FrontClient/src/pages/profile/ProfilePage.tsx`

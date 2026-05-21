@@ -1,0 +1,22 @@
+# Context Snapshot — frontclient-phase2
+
+- Task statement: Реализовать Phase 2 — Client domain mapping layer в `FrontClient`.
+- Desired outcome: В `FrontClient` есть отдельный client-safe mapping layer с dictionaries, view-model contracts, formatters и mappers для order/approval/vehicle/loyalty/dashboard.
+- Known facts/evidence:
+  - UI spec: `FrontClient/CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md`
+  - Implementation plan: `FrontClient/CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`
+  - Phase 1 shell already exists in `FrontClient/src/*`
+  - Brownfield reference contains staff-side auth/theme/domain patterns in `../autoshop-web-spec`
+- Constraints:
+  - Не тащить raw backend semantics в UI
+  - Держать client-safe language
+  - Реализация должна остаться в отдельном проекте `FrontClient`
+- Unknowns/open questions:
+  - точный backend payload client-side order/approval APIs пока не зафиксирован
+  - history/loyalty timeline shape может отличаться на реальном backend
+- Likely codebase touchpoints:
+  - `FrontClient/src/domain/client/*`
+  - `FrontClient/src/types/*`
+  - `FrontClient/src/pages/*`
+  - `../autoshop-web-spec/src/types/models.ts`
+  - `../autoshop-web-spec/src/utils/orderStatus.ts`

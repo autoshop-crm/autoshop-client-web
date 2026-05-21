@@ -1,0 +1,31 @@
+{
+  "mode": "ralph",
+  "phase": "frontclient-phase8",
+  "task": "Phase 8 — Loyalty",
+  "active": false,
+  "current_phase": "complete",
+  "completed_at": "2026-05-14T17:11:18Z",
+  "context_snapshot_path": ".omx/context/frontclient-phase8-20260514T171118Z.md",
+  "verification": {
+    "build": "PASS",
+    "build_command": "cd FrontClient && npm run build",
+    "deslop_pass": "PASS",
+    "post_deslop_regression": "PASS",
+    "architect_verification": "SELF_REVIEW_PASS"
+  },
+  "changed_files": [
+    "FrontClient/src/app/App.tsx",
+    "FrontClient/src/api/loyaltyApi.ts",
+    "FrontClient/src/domain/client/fixtures/mockClientData.ts",
+    "FrontClient/src/domain/client/mappers/loyaltyMapper.ts",
+    "FrontClient/src/domain/client/view-models.ts",
+    "FrontClient/src/hooks/useLoyaltyData.ts",
+    "FrontClient/src/pages/loyalty/LoyaltyPage.tsx",
+    "FrontClient/src/types/domain.ts"
+  ],
+  "notes": [
+    "Implemented loyalty overview page focused on client benefit instead of bookkeeping.",
+    "Added balance, current benefit, order impact cards and transparent earn/spend history.",
+    "Connected loyalty route to mock-first API and loyalty mapping layer."
+  ]
+}

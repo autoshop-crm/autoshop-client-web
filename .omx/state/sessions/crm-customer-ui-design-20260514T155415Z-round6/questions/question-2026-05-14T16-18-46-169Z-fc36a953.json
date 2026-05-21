@@ -1,0 +1,37 @@
+{
+  "kind": "omx.question/v1",
+  "question_id": "question-2026-05-14T16-18-46-169Z-fc36a953",
+  "session_id": "crm-customer-ui-design-20260514T155415Z-round6",
+  "created_at": "2026-05-14T16:18:46.169Z",
+  "updated_at": "2026-05-14T16:18:46.188Z",
+  "status": "prompting",
+  "header": "Round 6 · Success",
+  "question": "По какому самому простому признаку ты поймёшь, что UI-концепция получилась правильной?",
+  "options": [
+    {
+      "label": "Клиенту всё понятно без объяснений",
+      "value": "self_explanatory",
+      "description": "Статус, цена и следующее действие считываются сразу"
+    },
+    {
+      "label": "Клиент быстро делает ключевые действия",
+      "value": "fast_actions",
+      "description": "Открыть заказ, согласовать, посмотреть цену, найти машину"
+    },
+    {
+      "label": "Оба признака",
+      "value": "both",
+      "description": "И понятность, и скорость действий обязательны"
+    }
+  ],
+  "allow_other": true,
+  "other_label": "Свой критерий",
+  "multi_select": false,
+  "type": "single-answerable",
+  "source": "deep-interview",
+  "renderer": {
+    "renderer": "tmux-session",
+    "target": "omx-question-question-2026-05-14T16-18-46-169",
+    "launched_at": "2026-05-14T16:18:46.174Z"
+  }
+}

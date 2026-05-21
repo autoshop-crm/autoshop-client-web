@@ -1,0 +1,22 @@
+# Context Snapshot — frontclient-phase4
+
+- Task statement: Реализовать Phase 4 — Orders MVP в `FrontClient`.
+- Desired outcome: В `FrontClient` есть клиентский список заказов и `Client Order Journey Page` с active/archive segmentation, progress/timeline layer, price summary и client-safe details.
+- Known facts/evidence:
+  - UI spec: `FrontClient/CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md`
+  - Implementation plan: `FrontClient/CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`
+  - Phase 1 shell exists
+  - Phase 2 mapping layer exists
+  - Phase 3 dashboard already consumes dashboard view-models
+- Constraints:
+  - orders UI must be card-first, not table-first
+  - order details must be journey-first, not staff workspace clone
+  - no internal operational details on screen
+- Unknowns/open questions:
+  - real backend endpoints for customer-facing orders list/details are not fixed yet
+  - some file/timeline/approval payload details may differ once backend is wired
+- Likely codebase touchpoints:
+  - `FrontClient/src/pages/*`
+  - `FrontClient/src/api/*`
+  - `FrontClient/src/hooks/*`
+  - `FrontClient/src/domain/client/*`

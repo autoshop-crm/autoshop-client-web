@@ -1,0 +1,30 @@
+# Context Snapshot — crm-customer-ui-design
+
+- Task statement: Провести deep interview по клиентскому UI-дизайну CRM и подготовить документ в `FrontClient`, описывающий дизайн проекта с точки зрения UI.
+- Desired outcome: execution-ready UI design spec для отдельного клиентского проекта.
+- Stated solution: интервью на основе `ContextProject/Now/CRM_CUSTOMER_FRONTEND_CONCEPT_RU.md` + сохранение итогового документа в `FrontClient`.
+- Probable intent hypothesis: пользователь хочет не просто roadmap, а зафиксированную дизайн-систему продукта, чтобы дальнейшая реализация экранов не скатилась в копию staff CRM.
+- Known facts/evidence:
+  - клиентская часть должна быть прозрачным сервисным кабинетом, а не staff-копией;
+  - клиенту нужны машины, заказы, статусы, согласования, цена, документы, loyalty, booking;
+  - текущий reference staff shell и nav ориентированы на внутренние разделы.
+- Constraints:
+  - отдельный проект `FrontClient`;
+  - нужно опираться на концепт и brownfield reference `../autoshop-web-spec`;
+  - итог должен описывать UI-дизайн, а не только технический план.
+- Unknowns/open questions:
+  - какой визуальный характер нужен бренду: premium / mass-market / warm / minimal;
+  - насколько “app-like” должен быть UI;
+  - насколько смело отходить от текущей MUI enterprise aesthetics;
+  - какие паттерны считать обязательными для MVP;
+  - какие вещи пользователь считает недопустимыми в клиентском UX.
+- Decision-boundary unknowns:
+  - что можно решать самостоятельно в визуальной системе;
+  - где нужно обязательное подтверждение пользователя;
+  - что строго вне scope для первой версии design spec.
+- Likely codebase touchpoints:
+  - `ContextProject/Now/CRM_CUSTOMER_FRONTEND_CONCEPT_RU.md`
+  - `FrontClient/CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`
+  - `../autoshop-web-spec/src/styles/theme.ts`
+  - `../autoshop-web-spec/src/layouts/AppLayout.tsx`
+  - `../autoshop-web-spec/src/pages/orders/*`

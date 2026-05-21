@@ -1,0 +1,37 @@
+{
+  "kind": "omx.question/v1",
+  "question_id": "question-2026-05-14T16-15-33-038Z-3bd56794",
+  "session_id": "crm-customer-ui-design-20260514T155415Z-round4",
+  "created_at": "2026-05-14T16:15:33.038Z",
+  "updated_at": "2026-05-14T16:15:33.054Z",
+  "status": "prompting",
+  "header": "Round 4 · Pressure Pass",
+  "question": "В концепте прямо сказано не копировать staff CRM и не показывать внутреннюю кухню. Представь, что backend уже отдаёт всё: роли сотрудников, внутренние статусы, склад, закупку, служебные id. Что из этого ты всё равно НЕ покажешь обычному клиенту на основном order screen первой версии?",
+  "options": [
+    {
+      "label": "Спрячу внутренние operational детали",
+      "value": "hide_operational",
+      "description": "Не показывать роли, склад, закупку, служебные id"
+    },
+    {
+      "label": "Спрячу только технические статусы",
+      "value": "hide_backend_terms",
+      "description": "Остальное можно, если упрощённо оформить"
+    },
+    {
+      "label": "Покажу почти всё, если красиво оформить",
+      "value": "show_most_if_designed",
+      "description": "Ставка на дизайн, а не на жёсткие границы"
+    }
+  ],
+  "allow_other": true,
+  "other_label": "Свой точный boundary",
+  "multi_select": false,
+  "type": "single-answerable",
+  "source": "deep-interview",
+  "renderer": {
+    "renderer": "tmux-session",
+    "target": "omx-question-question-2026-05-14T16-15-33-038",
+    "launched_at": "2026-05-14T16:15:33.044Z"
+  }
+}

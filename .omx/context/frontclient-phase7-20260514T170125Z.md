@@ -1,0 +1,27 @@
+# Context Snapshot
+
+- task statement: Реализовать Phase 7 — Files и documents в `FrontClient` с учетом `CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md` и `CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`.
+- desired outcome: Клиент видит доверительный слой документов и фото по заказам/автомобилям, может открыть/скачать материалы и загрузить pre-visit файлы через понятный app-like UX.
+- known facts/evidence:
+  - Фазы 1–6 уже реализованы в `FrontClient/src`.
+  - В `App.tsx` раздел `Документы` пока placeholder.
+  - В order/vehicle details уже есть плоский список `documents`, но без grouping/open/download/upload.
+  - В плане фазы 7 нужны grouping: фото, документы, акты, сметы; open/download; upload c size/type/progress/retry.
+  - UI spec требует trust layer, простые CTA `Открыть` / `Скачать`, без сложной файловой терминологии.
+- constraints:
+  - Сохранить клиентский, card-based, app-like UI.
+  - Не выводить operational/internal CRM details.
+  - Использовать существующий mock-first подход проекта.
+- unknowns/open questions:
+  - Реальный backend для files пока не подключается, значит используем локальный in-memory mock.
+  - Preview будет UI-level, без реального бинарного контента.
+- likely codebase touchpoints:
+  - `FrontClient/src/types/domain.ts`
+  - `FrontClient/src/domain/client/view-models.ts`
+  - `FrontClient/src/domain/client/mappers/*`
+  - `FrontClient/src/api/*`
+  - `FrontClient/src/hooks/*`
+  - `FrontClient/src/pages/orders/*`
+  - `FrontClient/src/pages/vehicles/*`
+  - `FrontClient/src/pages/documents/*`
+  - `FrontClient/src/app/App.tsx`

@@ -1,0 +1,25 @@
+# Context Snapshot
+
+- task statement: Реализовать Phase 8 — Loyalty в `FrontClient` с учетом `CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md` и `CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`.
+- desired outcome: Клиент понимает текущий баланс бонусов, текущую выгоду, связь бонусов с заказами и историю начислений/списаний через app-like экран без бухгалтерского ощущения.
+- known facts/evidence:
+  - В `App.tsx` раздел `Лояльность` пока placeholder.
+  - Базовый `ClientLoyaltyViewModel` уже используется на dashboard и в details заказа.
+  - UI spec требует показать баланс, выгоду, связь бонусов с заказом и короткое explanatory copy.
+  - Phase 8 DoD: клиент понимает, сколько у него бонусов и как они влияют на стоимость обслуживания.
+- constraints:
+  - Дизайн должен быть клиентским, карточным, быстрым, без operational/internal CRM details.
+  - Лояльность не должна ощущаться как бухгалтерия.
+  - Использовать существующий mock-first подход проекта.
+- unknowns/open questions:
+  - Реального backend history endpoint нет — нужен локальный mock ledger.
+  - Нужна простая клиентская трактовка tier/benefit без усложнения правил программы.
+- likely codebase touchpoints:
+  - `FrontClient/src/types/domain.ts`
+  - `FrontClient/src/domain/client/view-models.ts`
+  - `FrontClient/src/domain/client/mappers/loyaltyMapper.ts`
+  - `FrontClient/src/api/loyaltyApi.ts`
+  - `FrontClient/src/hooks/useLoyaltyData.ts`
+  - `FrontClient/src/pages/loyalty/LoyaltyPage.tsx`
+  - `FrontClient/src/app/App.tsx`
+  - `FrontClient/src/domain/client/fixtures/mockClientData.ts`

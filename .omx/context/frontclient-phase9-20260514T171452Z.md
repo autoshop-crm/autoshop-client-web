@@ -1,0 +1,27 @@
+# Context Snapshot
+
+- task statement: Реализовать Phase 9 — Booking MVP в `FrontClient` с учетом `CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md` и `CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`.
+- desired outcome: Новый или действующий клиент может оформить запись без звонка через app-like пошаговый flow: выбор авто, описание проблемы, слот времени, файлы, подтверждение, экран успеха.
+- known facts/evidence:
+  - В текущем приложении booking-раздела и route пока нет.
+  - UI spec настаивает на быстрых карточках, не более 3 кликов до нужного действия и без перегруза.
+  - Phase 9 требует slot-based time picker, привязку к существующему авто, добавление нового авто в scope, описание проблемы, прикрепление файлов и success screen.
+  - Уже существует documents upload UX, vehicles/orders domain и app shell.
+- constraints:
+  - Booking должен выглядеть как клиентский action flow, а не CRM-форма.
+  - Использовать mock-first реализацию без привязки к реальному backend contract.
+  - Держать flow мобильным и карточным.
+- unknowns/open questions:
+  - Реального backend booking API нет, нужен локальный mock store.
+  - Для MVP reschedule/cancel готовим только foundation/hints, без полноценного flow.
+- likely codebase touchpoints:
+  - `FrontClient/src/app/router/routeMap.ts`
+  - `FrontClient/src/app/App.tsx`
+  - `FrontClient/src/types/domain.ts`
+  - `FrontClient/src/domain/client/view-models.ts`
+  - `FrontClient/src/domain/client/fixtures/mockClientData.ts`
+  - `FrontClient/src/api/bookingApi.ts`
+  - `FrontClient/src/domain/client/mappers/bookingMapper.ts`
+  - `FrontClient/src/hooks/useBookingData.ts`
+  - `FrontClient/src/hooks/useBookingDraft.ts`
+  - `FrontClient/src/pages/booking/*`

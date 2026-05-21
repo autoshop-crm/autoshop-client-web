@@ -1,0 +1,24 @@
+# Context Snapshot
+
+- task statement: Реализовать Phase 11 — Notifications и service maturity в `FrontClient` с учетом `CRM_CUSTOMER_UI_DESIGN_SPEC_RU.md` и `CRM_CUSTOMER_FRONTEND_IMPLEMENTATION_PLAN_RU.md`.
+- desired outcome: Приложение не только показывает текущее состояние, но и возвращает клиента в сервисный цикл через notifications center, event cards, reminders и полезные repeat-visit CTA.
+- known facts/evidence:
+  - Отдельного notifications route и data layer пока нет.
+  - В profile уже есть notification settings, а booking/loyalty/documents/order journey уже реализованы.
+  - Dashboard уже является главным экраном, поэтому maturity signals должны органично встроиться туда без перегруза.
+- constraints:
+  - UI должен остаться клиентским, карточным, быстрым, без staff CRM semantics.
+  - Показывать только полезные клиентские события: визиты, согласования, напоминания, сезонные рекомендации, повторный визит.
+  - Использовать mock-first подход.
+- unknowns/open questions:
+  - Нет backend contract для notification center, recommendations, reschedule/cancel.
+  - Для MVP/maturity нужен foundation, а не полный orchestration backend.
+- likely codebase touchpoints:
+  - `FrontClient/src/app/router/routeMap.ts`
+  - `FrontClient/src/app/App.tsx`
+  - `FrontClient/src/api/notificationsApi.ts`
+  - `FrontClient/src/domain/client/view-models.ts`
+  - `FrontClient/src/domain/client/mappers/notificationsMapper.ts`
+  - `FrontClient/src/hooks/useNotificationsData.ts`
+  - `FrontClient/src/pages/notifications/NotificationsPage.tsx`
+  - `FrontClient/src/pages/dashboard/DashboardPage.tsx`
