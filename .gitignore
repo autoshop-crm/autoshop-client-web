@@ -1,1 +1,5 @@
 ContextProject/
+.DS_Store
+FrontClient/node_modules/
+FrontClient/dist/
+FrontClient/.vite/
