@@ -14,7 +14,7 @@ const authHttp = axios.create({
   baseURL: import.meta.env.VITE_GATEWAY_BASE_URL ?? ''
 });
 
-const customerAuthBasePath = '/api/auth/customers';
+const customerAuthBasePath = '/api/customer-auth';
 
 const mockUser: AuthUser = {
   id: 1,
