@@ -14,6 +14,8 @@ const authHttp = axios.create({
   baseURL: import.meta.env.VITE_GATEWAY_BASE_URL ?? ''
 });
 
+const customerAuthBasePath = '/api/auth/customers';
+
 const mockUser: AuthUser = {
   id: 1,
   userId: 1,
@@ -71,7 +73,7 @@ export const authApi = {
       } satisfies RegisterResponse;
     }
 
-    const { data } = await authHttp.post<RegisterResponse>('/api/customer-auth/register', payload);
+    const { data } = await authHttp.post<RegisterResponse>(`${customerAuthBasePath}/register`, payload);
     return data;
   },
   login: async (payload: LoginPayload) => {
@@ -91,7 +93,7 @@ export const authApi = {
       } satisfies LoginResponse;
     }
 
-    const { data } = await authHttp.post<LoginResponse>('/api/customer-auth/login', { email: payload.username, password: payload.password });
+    const { data } = await authHttp.post<LoginResponse>(`${customerAuthBasePath}/login`, { email: payload.username, password: payload.password });
     return data;
   },
   refresh: async (refreshToken: string) => {
@@ -111,7 +113,7 @@ export const authApi = {
       } satisfies RefreshResponse;
     }
 
-    const { data } = await authHttp.post<RefreshResponse>('/api/customer-auth/refresh', { refreshToken });
+    const { data } = await authHttp.post<RefreshResponse>(`${customerAuthBasePath}/refresh`, { refreshToken });
     return data;
   },
   me: async (accessToken: string) => {
@@ -119,7 +121,7 @@ export const authApi = {
       return mockUser;
     }
 
-    const { data } = await authHttp.get<CustomerAuthMeResponse>('/api/customer-auth/me', {
+    const { data } = await authHttp.get<CustomerAuthMeResponse>(`${customerAuthBasePath}/me`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -132,7 +134,7 @@ export const authApi = {
     }
 
     await authHttp.post(
-      '/api/customer-auth/logout',
+      `${customerAuthBasePath}/logout`,
       { refreshToken },
       {
         headers: {

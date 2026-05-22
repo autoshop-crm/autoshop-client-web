@@ -19,12 +19,12 @@
 
 ## Важно по backend contract
 
-По `CRM_CUSTOMER_API_DOCUMENTATION_RU.md` сейчас реально доступны прежде всего:
+По текущему customer auth контракту frontend должен использовать canonical customer auth routes:
 
-- `POST /api/auth/login`
-- `POST /api/auth/refresh`
-- `GET /api/auth/me`
-- `POST /api/auth/logout`
-- часть customer order/approval flows
+- `POST /api/auth/customers/register`
+- `POST /api/auth/customers/login`
+- `POST /api/auth/customers/refresh`
+- `GET /api/auth/customers/me`
+- `POST /api/auth/customers/logout`
 
 Self-service регистрация, recovery, customer profile, vehicles, loyalty, files и booking как public customer API на backend пока не подтверждены полностью и требуют отдельных customer-safe endpoint'ов или BFF.

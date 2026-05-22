@@ -79,7 +79,7 @@ export const RegisterPlaceholderPage = () => {
             <Stack component="form" spacing={2.5} onSubmit={handleSubmit}>
               <Stack spacing={1}>
                 <Typography variant="h4">Регистрация</Typography>
-                <Typography color="text.secondary">Создайте customer account через новый backend endpoint `POST /api/customer-auth/register`.</Typography>
+                <Typography color="text.secondary">Создайте customer account через backend endpoint `POST /api/auth/customers/register`.</Typography>
               </Stack>
               {error ? <Alert severity="error">{error}</Alert> : null}
               {successMessage ? <Alert severity="success" icon={<CheckCircleOutlineRoundedIcon />}>{successMessage}</Alert> : null}
