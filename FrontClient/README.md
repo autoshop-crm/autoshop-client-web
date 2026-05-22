@@ -21,10 +21,10 @@
 
 По текущему customer auth контракту frontend должен использовать canonical customer auth routes:
 
-- `POST /api/customer-auth/register`
-- `POST /api/customer-auth/login`
-- `POST /api/customer-auth/refresh`
-- `GET /api/customer-auth/me`
-- `POST /api/customer-auth/logout`
+- `POST /api/auth/customers/register`
+- `POST /api/auth/customers/login`
+- `POST /api/auth/customers/refresh`
+- `GET /api/auth/customers/me`
+- `POST /api/auth/customers/logout`
 
 Self-service регистрация, recovery, customer profile, vehicles, loyalty, files и booking как public customer API на backend пока не подтверждены полностью и требуют отдельных customer-safe endpoint'ов или BFF.
