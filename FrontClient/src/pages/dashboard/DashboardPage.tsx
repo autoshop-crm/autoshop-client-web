@@ -8,7 +8,7 @@ import ReceiptLongRoundedIcon from '@mui/icons-material/ReceiptLongRounded';
 import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import { Box, Button, Chip, Divider, Skeleton, Stack, Typography } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { appRoutes } from '../../app/router/routeMap';
 import { AppAlert } from '../../components/AppAlert';
 import { EmptyState } from '../../components/EmptyState';
@@ -50,6 +50,7 @@ const DashboardLoadingState = () => (
 );
 
 export const DashboardPage = () => {
+  const navigate = useNavigate();
   const { data, loading, error, reload } = useDashboardData();
 
   if (loading) {
@@ -142,7 +143,7 @@ export const DashboardPage = () => {
               title="Активных заказов пока нет"
               description="Когда вы оформите запись или начнётся новый заказ, здесь сразу появится статус и следующее действие."
               actionLabel="Мои автомобили"
-              onAction={() => window.location.assign(appRoutes.vehicles)}
+              onAction={() => navigate(appRoutes.vehicles)}
             />
           )}
         </SectionCard>
