@@ -47,7 +47,7 @@ export const mapBookingSlotsToClientViewModel = (slots: BookingSlot[]) => slots.
 
 export const mapBookingSuccessToClientViewModel = (booking: BookingConfirmation): ClientBookingSuccessViewModel => ({
   bookingId: booking.bookingId,
-  orderId: booking.orderId,
+  orderId: booking.orderId ?? null,
   title: 'Запись оформлена',
   description: 'Мы сохранили ваш визит и покажем его в клиентском кабинете как ближайшую запись.',
   slotLabel: booking.slotLabel,

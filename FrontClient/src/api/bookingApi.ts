@@ -1,24 +1,29 @@
 import { clientSelfServiceApi } from './clientSelfServiceApi';
-import { BookingConfirmation, BookingRequest, BookingService, BookingSlot, Order, Vehicle } from '../types/domain';
+import { BookingConfirmation, BookingDayAvailability, BookingRequest, BookingService, BookingSlot, Order, Vehicle } from '../types/domain';
 
 interface BookingBootstrapPayload {
   vehicles: Vehicle[];
   services: BookingService[];
 }
 
-const createConfirmation = (order: Order, vehicles: Vehicle[]): BookingConfirmation => {
-  const vehicle = vehicles.find((item) => item.id === order.vehicleId);
-  const vehicleLabel = vehicle ? `${vehicle.brand} ${vehicle.model} · ${vehicle.licensePlate}` : `${order.vehicleBrand ?? 'Автомобиль'} ${order.vehicleModel ?? ''}`.trim();
-  const slotLabel = order.plannedVisitAt
-    ? new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long', hour: '2-digit', minute: '2-digit' }).format(new Date(order.plannedVisitAt))
-    : 'Время будет уточнено';
+const timeRangeFormatter = new Intl.DateTimeFormat('ru-RU', {
+  day: '2-digit',
+  month: 'long',
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'UTC'
+});
 
+const createConfirmation = (booking: { bookingId: number; vehicleId: number; startAt: string; endAt: string }, vehicles: Vehicle[]): BookingConfirmation => {
+  const vehicle = vehicles.find((item) => item.id === booking.vehicleId);
+  const vehicleLabel = vehicle ? `${vehicle.brand} ${vehicle.model} · ${vehicle.licensePlate}` : 'Автомобиль клиента';
+  const slotLabel = `${timeRangeFormatter.format(new Date(booking.startAt))} – ${new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }).format(new Date(booking.endAt))}`;
   return {
-    bookingId: `Заказ #${order.id}`,
-    orderId: order.id,
+    bookingId: `Запись #${booking.bookingId}`,
+    orderId: null,
     slotLabel,
     vehicleLabel,
-    nextStep: 'Запись создана. Дальше вы сможете открыть заказ, следить за статусом, согласованиями и документами.',
+    nextStep: 'Запись создана. Если слот успеет занять кто-то ещё до подтверждения, backend вернёт конфликт и предложит выбрать другое время.',
   };
 };
 
@@ -30,14 +35,16 @@ export const bookingApi = {
     ]);
     return { vehicles, services };
   },
-  lookupSlots: async (params: { vehicleId: number; serviceIds: number[]; dateFrom?: string; days?: number }) =>
+  lookupAvailability: async (params: { vehicleId: number; serviceIds: number[]; from?: string; days?: number }): Promise<BookingDayAvailability[]> =>
+    clientSelfServiceApi.getBookingAvailability(params),
+  lookupSlots: async (params: { vehicleId: number; serviceIds: number[]; date: string }) =>
     clientSelfServiceApi.lookupBookingSlots(params),
   create: async (payload: BookingRequest): Promise<BookingConfirmation> => {
-    const [order, vehicles] = await Promise.all([
+    const [booking, vehicles] = await Promise.all([
       clientSelfServiceApi.createBooking(payload),
       clientSelfServiceApi.getCurrentCustomerVehicles()
     ]);
-    return createConfirmation(order, vehicles);
+    return createConfirmation(booking, vehicles);
   },
   update: async (orderId: number, payload: Omit<BookingRequest, 'vehicleId'>): Promise<Order> => clientSelfServiceApi.updateBooking(orderId, payload),
   cancel: async (orderId: number): Promise<Order> => clientSelfServiceApi.cancelBooking(orderId),

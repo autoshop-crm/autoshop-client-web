@@ -222,9 +222,18 @@ export interface BookingService {
   defaultDurationMinutes?: number | null;
 }
 
+export type BookingAvailabilityReason = 'PAST' | 'CLOSED' | 'NO_EMPLOYEE' | 'FULL' | string;
+
+export interface BookingDayAvailability {
+  date: string;
+  available: boolean;
+  reason: BookingAvailabilityReason | null;
+}
+
 export interface BookingSlot {
   id: string;
   startAt: string;
+  endAt: string;
   slotMinutes: number;
   available: boolean;
   availableEmployeeCount: number;
@@ -234,16 +243,14 @@ export interface BookingSlot {
 
 export interface BookingRequest {
   vehicleId: number;
-  plannedVisitAt: string;
-  plannedSlotMinutes: number;
-  problem: string;
-  intakeNotes?: string | null;
-  selectedServiceIds?: number[];
+  serviceIds: number[];
+  startAt: string;
+  problem?: string;
 }
 
 export interface BookingConfirmation {
   bookingId: string;
-  orderId: number;
+  orderId?: number | null;
   slotLabel: string;
   vehicleLabel: string;
   nextStep: string;

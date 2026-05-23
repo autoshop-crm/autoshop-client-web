@@ -241,7 +241,7 @@ export interface ClientBookingPageViewModel {
 
 export interface ClientBookingSuccessViewModel {
   bookingId: string;
-  orderId: number;
+  orderId: number | null;
   title: string;
   description: string;
   slotLabel: string;

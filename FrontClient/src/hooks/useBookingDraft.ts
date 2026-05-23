@@ -69,11 +69,9 @@ export const useBookingDraft = () => {
     try {
       const result = await bookingApi.create({
         vehicleId,
-        plannedVisitAt: slot.startAt,
-        plannedSlotMinutes: slot.slotMinutes,
-        problem,
-        intakeNotes: comment,
-        selectedServiceIds
+        serviceIds: selectedServiceIds,
+        startAt: slot.startAt,
+        problem: [problem.trim(), comment.trim()].filter(Boolean).join('\n\n')
       });
       setSuccess(mapBookingSuccessToClientViewModel(result));
       setStep('success');

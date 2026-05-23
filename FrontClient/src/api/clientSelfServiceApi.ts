@@ -1,5 +1,5 @@
 import { http } from './http';
-import { ApprovalRequest, BookingRequest, BookingService, BookingSlot, FileItem, Order, OrderTimelineEntry, Vehicle } from '../types/domain';
+import { ApprovalRequest, BookingDayAvailability, BookingRequest, BookingService, BookingSlot, FileItem, Order, OrderTimelineEntry, Vehicle } from '../types/domain';
 import { AuthUser } from '../types/auth';
 
 interface CustomerProfileResponse {
@@ -68,9 +68,25 @@ interface CustomerFileDownloadUrlResponse {
 
 interface CustomerBookingSlotResponse {
   startAt: string;
+  endAt: string;
   slotMinutes: number;
   available: boolean;
   availableEmployeeCount: number;
+}
+
+interface CustomerBookingAvailabilityResponse {
+  date: string;
+  available: boolean;
+  reason: string | null;
+}
+
+interface CustomerBookingCreatedResponse {
+  bookingId: number;
+  vehicleId: number;
+  serviceIds: number[];
+  startAt: string;
+  endAt: string;
+  status: string;
 }
 
 export const mapCustomerProfileToAuthUser = (profile: CustomerProfileResponse): AuthUser => ({
@@ -126,20 +142,26 @@ const mapFileMetadata = (file: CustomerFileMetadataResponse): FileItem => ({
 const makeSlotId = (startAt: string, slotMinutes: number) => `${startAt}|${slotMinutes}`;
 
 const slotLabelFormatter = new Intl.DateTimeFormat('ru-RU', {
-  day: '2-digit',
-  month: 'long',
   hour: '2-digit',
-  minute: '2-digit'
+  minute: '2-digit',
+  timeZone: 'UTC'
 });
 
 const mapBookingSlot = (slot: CustomerBookingSlotResponse): BookingSlot => ({
   id: makeSlotId(slot.startAt, slot.slotMinutes),
   startAt: slot.startAt,
+  endAt: slot.endAt,
   slotMinutes: slot.slotMinutes,
   available: slot.available,
   availableEmployeeCount: slot.availableEmployeeCount,
-  label: `${slotLabelFormatter.format(new Date(slot.startAt))} · ${slot.slotMinutes} мин`,
+  label: `${slotLabelFormatter.format(new Date(slot.startAt))} – ${slotLabelFormatter.format(new Date(slot.endAt))} · ${slot.slotMinutes} мин`,
   isRecommended: slot.available && slot.availableEmployeeCount > 1
+});
+
+const mapBookingAvailability = (day: CustomerBookingAvailabilityResponse): BookingDayAvailability => ({
+  date: day.date,
+  available: day.available,
+  reason: day.reason
 });
 
 export const clientSelfServiceApi = {
@@ -190,18 +212,25 @@ export const clientSelfServiceApi = {
     const { data } = await http.get<BookingService[]>('/api/customers/me/booking/services');
     return data;
   },
-  lookupBookingSlots: async (params: { vehicleId: number; serviceIds?: number[]; dateFrom?: string; days?: number; slotMinutes?: number }) => {
+  getBookingAvailability: async (params: { vehicleId: number; serviceIds: number[]; from?: string; days?: number }) => {
     const search = new URLSearchParams();
     search.set('vehicleId', String(params.vehicleId));
-    params.serviceIds?.forEach((serviceId) => search.append('serviceIds', String(serviceId)));
-    if (params.dateFrom) search.set('dateFrom', params.dateFrom);
+    params.serviceIds.forEach((serviceId) => search.append('serviceIds', String(serviceId)));
+    if (params.from) search.set('from', params.from);
     if (typeof params.days === 'number') search.set('days', String(params.days));
-    if (typeof params.slotMinutes === 'number') search.set('slotMinutes', String(params.slotMinutes));
+    const { data } = await http.get<CustomerBookingAvailabilityResponse[]>(`/api/customers/me/booking/availability?${search.toString()}`);
+    return data.map(mapBookingAvailability);
+  },
+  lookupBookingSlots: async (params: { vehicleId: number; serviceIds: number[]; date: string }) => {
+    const search = new URLSearchParams();
+    search.set('vehicleId', String(params.vehicleId));
+    params.serviceIds.forEach((serviceId) => search.append('serviceIds', String(serviceId)));
+    search.set('date', params.date);
     const { data } = await http.get<CustomerBookingSlotResponse[]>(`/api/customers/me/booking/slots?${search.toString()}`);
     return data.map(mapBookingSlot);
   },
   createBooking: async (payload: BookingRequest) => {
-    const { data } = await http.post<Order>('/api/customers/me/bookings', payload);
+    const { data } = await http.post<CustomerBookingCreatedResponse>('/api/customers/me/bookings', payload);
     return data;
   },
   updateBooking: async (orderId: number, payload: Omit<BookingRequest, 'vehicleId'>) => {
