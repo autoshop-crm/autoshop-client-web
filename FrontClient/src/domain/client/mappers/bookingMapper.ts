@@ -39,8 +39,8 @@ export const mapBookingBootstrapToClientViewModel = (params: {
   vehicles: params.vehicles.map(mapVehicle),
   services: params.services.map(mapService),
   slots: (params.slots ?? []).map(mapSlot),
-  uploadHint: 'Файлы в customer self-service пока доступны только для чтения и скачивания — загрузка будет добавлена отдельным backend пакетом.',
-  explanatoryCopy: 'Запись занимает несколько коротких шагов: авто, услуги, описание проблемы, выбор времени и подтверждение. Без звонка и без staff-терминов.'
+  uploadHint: 'Файлы в этом разделе пока можно только открывать и скачивать.',
+  explanatoryCopy: 'Запись занимает несколько коротких шагов: автомобиль, услуги, описание проблемы, выбор времени и подтверждение.'
 });
 
 export const mapBookingSlotsToClientViewModel = (slots: BookingSlot[]) => slots.map(mapSlot);

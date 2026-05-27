@@ -39,7 +39,7 @@ export const RegisterPlaceholderPage = () => {
 
       setSuccessMessage(
         result.requiresEmailVerification
-          ? 'Аккаунт создан. Подтвердите email, если backend требует verification, но кабинет уже готов к использованию.'
+          ? 'Аккаунт создан. При необходимости подтвердите email, после этого можно пользоваться кабинетом.'
           : 'Аккаунт создан. Перенаправляем в кабинет.'
       );
       navigate(appRoutes.home, { replace: true });
@@ -69,8 +69,8 @@ export const RegisterPlaceholderPage = () => {
               <Typography variant="h3" color="common.white">AutoShop Client</Typography>
               <Typography variant="h6" color="rgba(255,255,255,0.92)">Создайте клиентский кабинет и управляйте обслуживанием без звонков: запись, статус заказа, согласования и документы в одном месте.</Typography>
               <Stack spacing={1.5}>
-                <Typography color="rgba(255,255,255,0.88)">- Регистрация напрямую через новый customer auth facade</Typography>
-                <Typography color="rgba(255,255,255,0.88)">- Один UI-язык для web и mobile</Typography>
+                <Typography color="rgba(255,255,255,0.88)">- Быстрая регистрация без лишних шагов</Typography>
+                <Typography color="rgba(255,255,255,0.88)">- Понятный и аккуратный личный кабинет</Typography>
                 <Typography color="rgba(255,255,255,0.88)">- Сразу после регистрации можно перейти в кабинет</Typography>
               </Stack>
             </Stack>
@@ -79,7 +79,7 @@ export const RegisterPlaceholderPage = () => {
             <Stack component="form" spacing={2.5} onSubmit={handleSubmit}>
               <Stack spacing={1}>
                 <Typography variant="h4">Регистрация</Typography>
-                <Typography color="text.secondary">Создайте customer account через backend endpoint `POST /api/customer-auth/register`.</Typography>
+                <Typography color="text.secondary">Создайте аккаунт, чтобы управлять обслуживанием автомобиля в одном месте.</Typography>
               </Stack>
               {error ? <Alert severity="error">{error}</Alert> : null}
               {successMessage ? <Alert severity="success" icon={<CheckCircleOutlineRoundedIcon />}>{successMessage}</Alert> : null}

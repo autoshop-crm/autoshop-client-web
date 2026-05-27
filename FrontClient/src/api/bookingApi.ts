@@ -23,7 +23,7 @@ const createConfirmation = (booking: { bookingId: number; vehicleId: number; sta
     orderId: null,
     slotLabel,
     vehicleLabel,
-    nextStep: 'Запись создана. Если слот успеет занять кто-то ещё до подтверждения, backend вернёт конфликт и предложит выбрать другое время.',
+    nextStep: 'Запись создана. Если выбранное время станет недоступно, мы предложим выбрать другой вариант.',
   };
 };
 

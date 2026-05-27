@@ -42,7 +42,7 @@ export const LoginPage = () => {
               <Stack spacing={1.5}>
                 <Typography color="rgba(255,255,255,0.88)">- До нужной информации не больше 3 кликов</Typography>
                 <Typography color="rgba(255,255,255,0.88)">- Только важные блоки по машине и заказам</Typography>
-                <Typography color="rgba(255,255,255,0.88)">- Один UI-язык для web и mobile</Typography>
+                <Typography color="rgba(255,255,255,0.88)">- Понятный кабинет для всех основных действий</Typography>
               </Stack>
             </Stack>
           </Box>
@@ -50,7 +50,7 @@ export const LoginPage = () => {
             <Stack component="form" spacing={3} onSubmit={handleSubmit}>
               <Stack spacing={1}>
                 <Typography variant="h4">Вход в кабинет</Typography>
-                <Typography color="text.secondary">Введите email и пароль, чтобы открыть ваш сервисный кабинет через customer auth facade.</Typography>
+                <Typography color="text.secondary">Введите email и пароль, чтобы открыть личный кабинет.</Typography>
               </Stack>
               {error ? <Alert severity="error">{error}</Alert> : null}
               <TextField label="Email" value={username} onChange={(event) => setUsername(event.target.value)} fullWidth autoComplete="username" />

@@ -54,12 +54,12 @@ export const DocumentsPage = () => {
   return (
     <Stack spacing={3}>
       <PageIntro
-        eyebrow="Documents trust layer"
+        eyebrow="Документы"
         title="Документы и фото"
-        description="Здесь клиент быстро находит только нужные материалы: фото, документы, акты и сметы — без сложной файловой терминологии и без operational noise."
+        description="Здесь собраны фото, документы, акты и сметы по вашим автомобилям и заказам."
       />
 
-      <Alert severity="info">Новый customer self-service API уже закрывает полный read/download контур: документы клиента, автомобиля, заказа и presigned download URL.</Alert>
+      <Alert severity="info">Документы и фото можно открыть или скачать в пару нажатий.</Alert>
 
       {primarySection ? (
         <DocumentGroupsCard
@@ -73,7 +73,7 @@ export const DocumentsPage = () => {
           busyFileId={actions.busyFileId}
         />
       ) : (
-        <EmptyState title="Документы пока не появились" description="Когда по заказам или автомобилям добавятся фото и документы, этот раздел сразу станет полезной trust layer зоной." icon={<FolderRoundedIcon />} />
+        <EmptyState title="Документы пока не появились" description="Когда по заказам или автомобилям добавятся фото и документы, они появятся в этом разделе." icon={<FolderRoundedIcon />} />
       )}
 
       <Box sx={{ display: 'grid', gap: 24, gridTemplateColumns: { xs: '1fr', xl: '1.2fr 0.8fr' } }}>
@@ -108,7 +108,7 @@ export const DocumentsPage = () => {
           </SectionCard>
         </Stack>
 
-        <Alert severity="info">Customer upload/delete для файлов backend пока не открыл. Поэтому в UI честно доступны только просмотр и скачивание.</Alert>
+        <Alert severity="info">Сейчас в этом разделе доступны просмотр и скачивание файлов.</Alert>
       </Box>
     </Stack>
   );

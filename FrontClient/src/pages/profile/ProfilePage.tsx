@@ -79,7 +79,7 @@ export const ProfilePage = () => {
       setNextPassword('');
       setActionMessage('Пароль обновлён.');
     } catch {
-      setActionError('Backend пока не предоставил customer-safe password API для этого экрана.');
+      setActionError('Сменить пароль через этот экран пока нельзя. Попробуйте позже.');
     } finally {
       setSavingPassword(false);
     }
@@ -99,7 +99,7 @@ export const ProfilePage = () => {
       await reload();
       setActionMessage('Настройки уведомлений сохранены.');
     } catch {
-      setActionError('Backend пока не предоставил API для сохранения notification settings.');
+      setActionError('Сохранить настройки уведомлений пока не удалось. Попробуйте позже.');
     } finally {
       setSavingNotifications(false);
     }
@@ -108,9 +108,9 @@ export const ProfilePage = () => {
   return (
     <Stack spacing={3}>
       <PageIntro
-        eyebrow="Profile settings"
+        eyebrow="Профиль"
         title="Профиль и настройки"
-        description="Здесь вы управляете только своими контактами, каналами связи, паролем и уведомлениями — без staff-шумa и без лишних системных деталей."
+        description="Здесь вы управляете своими контактами, паролем и уведомлениями."
       />
 
       {actionMessage ? <Alert severity="success">{actionMessage}</Alert> : null}
@@ -122,7 +122,7 @@ export const ProfilePage = () => {
             <Stack spacing={2}>
               <TextField label="Имя" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
               <TextField label="Фамилия" value={lastName} onChange={(event) => setLastName(event.target.value)} />
-              <TextField label="Email" value={email} InputProps={{ readOnly: true }} helperText="Email управляется через auth flow и здесь не редактируется." />
+              <TextField label="Email" value={email} InputProps={{ readOnly: true }} helperText="Email пока нельзя изменить в этом разделе." />
               <TextField label="Телефон" value={phone} onChange={(event) => setPhone(event.target.value)} />
               <Button variant="contained" startIcon={<SaveRoundedIcon />} disabled={savingContacts} onClick={() => void saveContacts()} sx={{ alignSelf: 'flex-start' }}>
                 {savingContacts ? 'Сохраняем…' : 'Сохранить контакты'}

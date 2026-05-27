@@ -8,13 +8,13 @@ import { appRoutes } from '../../app/router/routeMap';
 export const RecoveryPlaceholderPage = () => (
   <Stack spacing={3} sx={{ maxWidth: 720, mx: 'auto', py: 6 }}>
     <PageIntro
-      title="Восстановление доступа пока не подключено"
-      description="В текущем backend contract для `FrontClient` нет подтверждённого public recovery/reset-password API."
+      title="Восстановление доступа пока недоступно"
+      description="Сейчас восстановить доступ через этот экран нельзя."
     />
     <Alert severity="info" icon={<InfoOutlinedIcon />}>
-      Это не ошибка фронта: для recovery нужен отдельный backend/auth endpoint. Пока корректный путь — использовать уже выданные учётные данные.
+      Если не получается войти, попробуйте использовать текущие данные для входа или обратитесь в сервис.
     </Alert>
-    <SectionCard title="Следующий шаг" description="Как только backend откроет recovery contract, этот экран можно будет перевести с placeholder на реальный flow.">
+    <SectionCard title="Что можно сделать" description="Вернитесь на экран входа и попробуйте авторизоваться ещё раз.">
       <Button component={RouterLink} to={appRoutes.login} variant="contained">Назад ко входу</Button>
     </SectionCard>
   </Stack>

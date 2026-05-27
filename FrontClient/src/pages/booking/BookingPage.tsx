@@ -189,12 +189,12 @@ export const BookingPage = () => {
   return (
     <Stack spacing={3}>
       <PageIntro
-        eyebrow="Booking self-service"
+        eyebrow="Запись в сервис"
         title="Записаться в сервис"
         description="Сначала выберите авто и услуги, затем день в календаре, после этого — свободное время только на выбранную дату."
       />
 
-      <Alert severity="info">Новый поток записи работает по обновлённому API: доступность дат → слоты на выбранный день → подтверждение записи.</Alert>
+      <Alert severity="info">Сначала выберите удобный день, затем свободное время и подтвердите запись.</Alert>
 
       <Box sx={{ display: 'grid', gap: 24, gridTemplateColumns: { xs: '1fr', xl: '1.15fr 0.85fr' } }}>
         <Stack spacing={3}>
@@ -248,7 +248,7 @@ export const BookingPage = () => {
                       </Stack>
                     </Box>
                   );
-                }) : <EmptyState title="Услуги пока недоступны" description="Backend не вернул customer-safe service catalog." />}
+                }) : <EmptyState title="Услуги пока недоступны" description="Попробуйте обновить страницу немного позже." />}
               </Stack>
             </SectionCard>
           ) : null}
@@ -379,7 +379,7 @@ export const BookingPage = () => {
                       ))}
                     </Stack>
                   ) : !slotsLoading ? (
-                    <EmptyState title="На этот день слотов нет" description="Выберите другую доступную дату в календаре — backend отдаёт время только на конкретный день." icon={<EventAvailableRoundedIcon />} />
+                    <EmptyState title="На этот день слотов нет" description="Выберите другую доступную дату в календаре." icon={<EventAvailableRoundedIcon />} />
                   ) : null
                 ) : null}
               </Stack>
@@ -387,7 +387,7 @@ export const BookingPage = () => {
           ) : null}
 
           {draft.step === 'confirm' ? (
-            <SectionCard title="Подтверждение записи" description="Проверьте краткую сводку. После подтверждения backend ещё раз проверит, что выбранный слот всё ещё свободен.">
+            <SectionCard title="Подтверждение записи" description="Проверьте краткую сводку перед отправкой записи.">
               <Stack spacing={2}>
                 <Box sx={{ p: 2.5, borderRadius: 3, bgcolor: 'background.default' }}>
                   <Typography fontWeight={700}>Автомобиль</Typography>
@@ -460,7 +460,7 @@ export const BookingPage = () => {
             </Stack>
           </SectionCard>
 
-          <SectionCard title="Что уже реально работает" description="Экран записи приведён к новому backend flow без предварительной загрузки слотов на несколько дней вперёд.">
+          <SectionCard title="Полезно знать" description="Свободное время показывается для выбранной даты, чтобы вам было проще выбрать удобный визит.">
             <Stack spacing={1.25}>
               <Typography color="text.secondary">- список авто берётся из `GET /api/customers/me/vehicles`</Typography>
               <Typography color="text.secondary">- услуги берутся из `GET /api/customers/me/booking/services`</Typography>

@@ -206,7 +206,7 @@ export const DashboardPage = () => {
                   <Typography color="text.secondary">{vehicle.subtitle}</Typography>
                 </Box>
               ))}
-              <Button component={RouterLink} to={appRoutes.vehicles} variant="outlined" startIcon={<DirectionsCarRoundedIcon />}>Открыть автомобили</Button>
+              <Button variant="outlined" startIcon={<DirectionsCarRoundedIcon />} onClick={() => navigate(appRoutes.vehicles)}>Открыть автомобили</Button>
             </Stack>
           ) : (
             <EmptyState title="Автомобили пока не добавлены" description="После первой привязки машины здесь появится быстрый доступ к истории заказов и статусам обслуживания." icon={<DirectionsCarRoundedIcon />} />
@@ -270,7 +270,7 @@ export const DashboardPage = () => {
           <Button component={RouterLink} to={appRoutes.approvals} variant="outlined" startIcon={<TaskAltRoundedIcon />} sx={{ justifyContent: 'flex-start' }}>
             Проверить согласования
           </Button>
-          <Button component={RouterLink} to={appRoutes.vehicles} variant="outlined" startIcon={<DirectionsCarRoundedIcon />} sx={{ justifyContent: 'flex-start' }}>
+          <Button variant="outlined" startIcon={<DirectionsCarRoundedIcon />} sx={{ justifyContent: 'flex-start' }} onClick={() => navigate(appRoutes.vehicles)}>
             Открыть мои автомобили
           </Button>
           <Button component={RouterLink} to={appRoutes.booking} variant="outlined" startIcon={<EventAvailableRoundedIcon />} sx={{ justifyContent: 'flex-start' }}>

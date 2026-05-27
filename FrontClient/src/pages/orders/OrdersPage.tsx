@@ -30,7 +30,7 @@ export const OrdersPage = () => {
   }
 
   if (!data) {
-    return <EmptyState title="Заказы недоступны" description="Список заказов появится, как только клиентский контур получит данные от backend." actionLabel="Повторить" onAction={() => void reload()} />;
+    return <EmptyState title="Заказы недоступны" description="Список заказов появится, как только данные будут готовы." actionLabel="Повторить" onAction={() => void reload()} />;
   }
 
   return (

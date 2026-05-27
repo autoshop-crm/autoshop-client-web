@@ -106,7 +106,7 @@ export const VehicleDetailsPage = () => {
 
   return (
     <Stack spacing={3}>
-      <PageIntro eyebrow="Vehicle details" title={data.vehicle.title} description="Карточка автомобиля показывает только полезный клиенту контекст: история заказов, активные обращения и материалы по машине." />
+      <PageIntro eyebrow="Автомобиль" title={data.vehicle.title} description="Здесь собрана основная информация об автомобиле, его заказах и материалах." />
 
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
         <Button variant="contained" startIcon={<EditRoundedIcon />} onClick={openEdit}>Редактировать</Button>
@@ -116,7 +116,7 @@ export const VehicleDetailsPage = () => {
 
       <Box sx={{ display: 'grid', gap: 24, gridTemplateColumns: { xs: '1fr', xl: '1.2fr 0.8fr' } }}>
         <Stack spacing={3}>
-          <SectionCard title="Карточка автомобиля" description="Машина должна восприниматься как отдельная клиентская сущность, а не как техническая строка из CRM.">
+          <SectionCard title="Карточка автомобиля" description="Основные данные об автомобиле и быстрый доступ к связанным действиям.">
             <Stack spacing={1.25}>
               <Typography fontWeight={800}>{data.vehicle.title}</Typography>
               <Typography color="text.secondary">{data.vehicle.subtitle}</Typography>
@@ -174,7 +174,7 @@ export const VehicleDetailsPage = () => {
         <Stack spacing={3}>
           <DocumentGroupsCard
             title="Фото и документы"
-            description="Материалы по машине и связанным заказам остаются trust layer: фото, сметы, акты и полезные документы можно быстро открыть и скачать."
+            description="Фото, сметы, акты и другие материалы по машине и связанным заказам собраны в одном месте."
             groups={data.documentGroups}
             emptyTitle="Документов пока нет"
             emptyDescription="Фото и документы по машине появятся здесь после визитов и работ в сервисе."
@@ -183,7 +183,7 @@ export const VehicleDetailsPage = () => {
             busyFileId={actions.busyFileId}
           />
 
-          <Alert severity="info">Через новый customer API здесь уже работают чтение и скачивание документов. Upload для клиента backend пока не открыл.</Alert>
+          <Alert severity="info">Документы по автомобилю можно открыть и скачать прямо из карточки.</Alert>
 
           <SectionCard title="Что можно сделать дальше" description="CTA по автомобилю остаются сервисными и короткими: открыть заказы, вернуться к списку или перейти к записи.">
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={1.5} useFlexGap flexWrap="wrap">

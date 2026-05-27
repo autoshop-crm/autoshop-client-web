@@ -143,7 +143,7 @@ export const OrderDetailsPage = () => {
             )}
           </SectionCard>
 
-          <Alert severity="info">Через customer self-service API здесь уже доступны чтение и скачивание документов. Загрузка файлов для клиента будет подключена после появления backend upload facade.</Alert>
+          <Alert severity="info">Документы по заказу можно открыть и скачать в этом разделе.</Alert>
         </Stack>
       </Box>
     </Stack>

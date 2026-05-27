@@ -235,9 +235,9 @@ export const VehiclesPage = () => {
   return (
     <Stack spacing={3}>
       <PageIntro
-        eyebrow="Vehicles self-service"
+        eyebrow="Мои автомобили"
         title="Мой гараж"
-        description="Теперь клиент может не только смотреть машины, но и реально управлять своим гаражом через новый self-service API."
+        description="Добавляйте автомобили, храните их данные и быстро переходите к сервисным действиям."
       />
 
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} justifyContent="space-between">
@@ -276,7 +276,7 @@ export const VehiclesPage = () => {
           ))}
         </Box>
       ) : (
-        <EmptyState title="Автомобили пока не добавлены" description="Теперь их можно добавить прямо из клиентского кабинета через self-service API." icon={<DirectionsCarRoundedIcon />} actionLabel="Добавить автомобиль" onAction={() => setCreateOpen(true)} />
+        <EmptyState title="Автомобили пока не добавлены" description="Добавьте первый автомобиль, чтобы записываться в сервис и видеть связанные материалы." icon={<DirectionsCarRoundedIcon />} actionLabel="Добавить автомобиль" onAction={() => setCreateOpen(true)} />
       )}
 
       <Dialog open={createOpen} onClose={() => !saving && setCreateOpen(false)} fullWidth maxWidth="md">
@@ -286,7 +286,7 @@ export const VehiclesPage = () => {
             {saveError ? <AppAlert message={saveError} /> : null}
             {catalogError ? <Alert severity="warning">{catalogError}</Alert> : null}
 
-            <Alert severity="info">Базовые поля сохраняют автомобиль сразу. Каталожная часть ниже опционально улучшает точность данных для backend и будущего поиска деталей.</Alert>
+            <Alert severity="info">Достаточно заполнить основные данные. Расширенные параметры помогут точнее указать комплектацию автомобиля.</Alert>
 
             <Autocomplete<string, false, false, true>
               freeSolo
@@ -332,7 +332,7 @@ export const VehiclesPage = () => {
             <TextField label="VIN" value={form.vin} onChange={(event) => setForm((current) => ({ ...current, vin: event.target.value.toUpperCase() }))} />
             <TextField label="Госномер" value={form.licensePlate} onChange={(event) => setForm((current) => ({ ...current, licensePlate: event.target.value.toUpperCase() }))} />
 
-            <Alert severity="info" icon={<SearchRoundedIcon fontSize="inherit" />}>Для точной backend-рамки заполните каскадно: производитель → серия / модель → модификация.</Alert>
+            <Alert severity="info" icon={<SearchRoundedIcon fontSize="inherit" />}>Чтобы точнее указать автомобиль, выберите производителя, серию или модель и модификацию.</Alert>
 
             <Autocomplete<CatalogManufacturer, false, false, false>
               options={manufacturers}
@@ -352,7 +352,7 @@ export const VehiclesPage = () => {
               getOptionLabel={(option) => option.name}
               isOptionEqualToValue={(option, value) => option.modelSeriesId === value.modelSeriesId}
               disabled={!selectedManufacturer}
-              renderInput={(params) => <TextField {...params} label="Серия / модель" helperText={!selectedManufacturer ? 'Сначала выберите производителя' : 'Это уже серверный UMAPI catalog'} />}
+              renderInput={(params) => <TextField {...params} label="Серия / модель" helperText={!selectedManufacturer ? 'Сначала выберите производителя' : 'Выберите подходящий вариант из списка'} />}
             />
 
             <Autocomplete<CatalogModification, false, false, false>
@@ -366,7 +366,7 @@ export const VehiclesPage = () => {
               getOptionLabel={(option) => option.displayName ?? option.name}
               isOptionEqualToValue={(option, value) => option.modificationId === value.modificationId}
               disabled={!selectedModelSeries}
-              renderInput={(params) => <TextField {...params} label="Точная модификация" helperText={!selectedModelSeries ? 'Сначала выберите серию / модель' : 'Отсюда backend получит точную техрамку автомобиля'} />}
+              renderInput={(params) => <TextField {...params} label="Точная модификация" helperText={!selectedModelSeries ? 'Сначала выберите серию / модель' : 'Выберите модификацию, если хотите уточнить комплектацию'} />}
             />
 
             {catalogSummary ? (
@@ -383,7 +383,7 @@ export const VehiclesPage = () => {
             ) : null}
 
             {!catalogSummary && catalogTouched ? (
-              <Alert severity="warning">Автомобиль можно сохранить и без точной каталожной привязки, но тогда backend не получит полную техническую рамку для downstream-поиска деталей и точной модификации.</Alert>
+              <Alert severity="warning">Автомобиль можно сохранить и без уточнения модификации. При этом часть данных о комплектации может остаться общей.</Alert>
             ) : null}
           </Stack>
         </DialogContent>
