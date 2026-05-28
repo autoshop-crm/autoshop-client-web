@@ -8,6 +8,8 @@ import { ThemeModeProvider, useThemeMode } from './app/providers/ThemeModeProvid
 import { createAppTheme } from './styles/theme';
 import './styles/global.css';
 
+const routerBasename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || '/';
+
 const RootApp = () => {
   const { themeMode } = useThemeMode();
   const theme = createAppTheme(themeMode);
@@ -15,7 +17,7 @@ const RootApp = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <AuthProvider>
           <App />
         </AuthProvider>

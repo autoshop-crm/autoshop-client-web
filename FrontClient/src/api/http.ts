@@ -8,10 +8,13 @@ export const http = axios.create({
 
 let refreshPromise: Promise<string | null> | null = null;
 
+const appBasePath = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const loginPath = `${appBasePath === '/' ? '' : appBasePath}/login`;
+
 const redirectToLogin = () => {
   authStorage.clear();
-  if (window.location.pathname !== '/login') {
-    window.location.href = '/login';
+  if (window.location.pathname !== loginPath) {
+    window.location.href = loginPath;
   }
 };
 

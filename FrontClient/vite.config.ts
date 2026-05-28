@@ -20,6 +20,7 @@ const proxyDiagnosticsPlugin = (): Plugin => ({
 });
 
 export default defineConfig({
+  base: '/client/',
   plugins: [react(), proxyDiagnosticsPlugin()],
   server: {
     port: 5174,

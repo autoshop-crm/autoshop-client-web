@@ -19,6 +19,7 @@ var proxyDiagnosticsPlugin = function () { return ({
     }
 }); };
 export default defineConfig({
+    base: '/client/',
     plugins: [react(), proxyDiagnosticsPlugin()],
     server: {
         port: 5174,
